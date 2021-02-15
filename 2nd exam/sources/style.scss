@@ -1,0 +1,463 @@
+@font-face {
+  font-family: "GothamBold";
+  src: url("../../sources/fonts/gothambold/gothambold1.woff") format("woff");
+}
+@font-face {
+  font-family: "GothamBook";
+  src: url("../../sources/fonts/GothamBook/GothamBook.woff") format("woff");
+}
+@font-face {
+  font-family: "GothamMedia";
+  src: url("../../sources/fonts/Gotham-Medium-Regular/gotham-medium-webfont.woff") format("woff");
+}
+
+@mixin hover {
+  transform: scale(1.4);
+}
+@mixin fontGothamBold() {
+  font-family: 'GothamBold', sans-serif;
+  text-transform: uppercase;
+}
+
+@mixin fontGothamBook() {
+  font-family: 'GothamBook', sans-serif;
+  text-transform: uppercase;
+}
+
+@mixin fontGothamMedia() {
+  font-family: 'GothamMedia', sans-serif;
+  text-transform: uppercase;
+}
+@mixin Flex-ju() {
+  display: flex;
+  justify-content: center;
+}
+$black-font: #2c4058;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
+  font-size: 10px;
+}
+
+.wrapper {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.header {
+  position: relative;
+  min-height: 100vh;
+  height: 100%;
+  width: 100%;
+  padding: 3vw 0 0 0;
+  background-image: url(../img/bg-full.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+    &__scroll {
+      position: absolute;
+      bottom: 10vh;
+      left: calc(50% - 2rem);
+      @include Flex-ju();
+      align-items: center;
+        a {
+            svg {
+                width: 4rem;
+                height: 4rem;
+            }
+        }
+        &:hover {
+          @include hover;
+        }
+    }
+}
+.slides {
+  height: 80vh;
+
+    &_text {
+      text-align: center;
+      @include Flex-ju();
+      flex-direction: column;
+      color: #fff;
+
+      h1 {
+        @include fontGothamBold();
+        font-size: 8rem;
+        line-height: 6rem;
+        letter-spacing: 0.05em;
+        
+      }
+      h3 {
+        @include fontGothamBook();
+        letter-spacing: 0.3em;
+        font-size: 1.8rem;
+        line-height: 1.8rem;
+        font-weight: 100;
+        padding-top: 4rem;
+      }
+  }
+}
+
+
+.slick-dots {
+  @include Flex-ju();
+  flex-direction: column;
+  position: absolute;
+  width: 3rem;
+  top: 0; 
+  right: -10%;
+  }
+
+.slick-slide:active, .slick-slide:focus {
+  outline: none;
+  }
+
+.main {
+  width: 100%;
+  &__content {
+      width: 80vw;
+      max-width: 1170px;
+      height: 100%;
+      margin: 0 auto;
+      @include Flex-ju();
+      align-items: center;
+  }
+}
+
+.nav {
+  &__content {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0;
+      &_logo{
+          img {
+              width: 100%;
+          }
+      }
+      &_menu {
+          width: 50%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          li {
+              list-style: none;
+              transition: 0.5s;
+              &:hover {
+                @include hover;
+              }
+              a {
+                @include fontGothamBook();
+                font-size: 1.4rem;
+                text-decoration: none;
+                font-weight: 300;
+                color: #fff;
+                
+                  &::before {
+                      content: "";
+                      display: inline-block;
+                      width: 7px;
+                      height:  7px;
+                      border-radius: 50%;
+                      border: 1px solid #fff;
+                      margin-right: 7px;
+                  }
+              }
+              
+          }
+          li.active {
+              a{
+                  &::before {
+                      background-color: #fff;
+                  }
+              }
+          }
+      }
+      &_burger {
+          display: none;
+      }
+      &_social {
+          width: 10vw;
+          display: flex;
+          justify-content: space-between;
+          
+      }
+  }
+}
+.social_icon_png { 
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid  #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  &:hover {
+      @include hover;                  
+  }
+}
+.h2_title {
+  @include fontGothamMedia();
+      font-size: 4.4rem;
+      line-height: 3.8rem;
+      text-align: center;
+      color: $black-font;
+      margin: 3vh 0 7vh;
+}
+.gallery_main {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+
+  .gallery {
+    flex-direction: column;
+    padding-top: 8vh;
+
+    &__button {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      width: 100%;
+      margin: 0 auto 7vh;
+        .btn {
+          width: 10rem;
+          padding: 1rem;
+        }
+    }
+    &__items {
+      font-size: 0;
+      display: grid;
+      grid-template-areas: 
+      "box1 box2 box3"
+      "box1 box4 box5";
+      grid-column-gap: 10px;
+      grid-row-gap: 10px;
+        image {
+          width: 100%;
+          height: 100%;
+          display: block;
+        }
+    }
+    &__button_second {
+      margin: 5vh 0 10vh;
+    }
+    .btn {
+      color: $black-font;
+      @include fontGothamBook();
+      font-size: 1.4rem;
+      background-color: #fff;
+      border: 1px solid $black-font;
+      transition: 0.5s;
+      
+      &:hover {
+        background-color: $black-font;
+        color: #fff; 
+        @include hover;
+      }
+      
+      &:focus {
+        outline: none;
+      } 
+    }
+    .btn_second {
+      padding: 1.5rem 5rem;
+    }
+  }
+
+}
+.line_up {
+  width: 10vw;
+  height: 1px;
+  background-color: $black-font;
+}
+@for $i from 1 to 5 {
+  .gallery_photo {
+      &:nth-child(#{$i}) {
+          grid-area: box + $i;
+      }
+  }
+}
+
+.contact{
+  height: 80vh;
+  position: relative;
+  #map{
+      height: 100%;
+  }
+  &__form{
+      position: absolute;
+      z-index: 1;
+      width: 100%;
+      margin-top: -40vh;
+      &__content{
+          width: 65%;
+          max-width: 770px;
+          margin: 0 auto;
+          padding: 5%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          background-color: #fff;
+ 
+          .content__info{
+              width: 100%;
+              height: 25vh;
+              display: flex;
+              flex-direction: row;
+              &_links{
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: space-between;
+                  width: 60%;
+                  a {
+                    text-decoration: none;
+                    color: $black-font;
+                    font-family: "GothamBook", sans-serif;
+                    font-size: 1.8rem;
+                    line-height: 1.8rem;
+                    font-weight: 100;
+                    
+                    svg {
+                        height: 1.4rem;
+                        margin-right: 0.5rem;
+                    }
+                  }
+              }
+              &_inputs {
+                  width: 40%;
+                  height: 100%;
+                  form {
+                      height: 100%;
+                      display: flex;
+                      flex-direction: column;
+                      justify-content: space-between;
+                      input {
+                          color: $black-font;
+                          font-family: "GothamBook", sans-serif;
+                          font-size: 1.8rem;
+                          line-height: 1.8rem;
+                          font-weight: 100;
+                          height: 2.25rem;
+                          border: 0;
+                          border-bottom: 1px solid $black-font;
+                         
+                          &:focus {
+                            outline: none;
+                            border-bottom: 1px solid $black-font;
+                          }
+                          &:active {
+                            outline: none;
+                            border-bottom: 1px solid $black-font;
+                          }
+                          
+                          &::placeholder{
+                              color: $black-font;
+                              opacity: 0.5;
+                          }
+                      }
+                        label {
+                          font-family: "GothamBook", sans-serif;
+                          font-size: 1.8rem;
+                          line-height: 1.8rem;
+                          font-weight: 100;
+                          color: pink;
+                        }
+
+                      .btn {
+                        color: $black-font;
+                        @include fontGothamBook();
+                        font-size: 1.4rem;
+                        background-color: #fff;
+                        border: 1px solid $black-font;
+                        transition: 0.5s;
+                        width: 10rem;
+                        padding: 1rem;
+                        align-self: flex-end;
+                        
+                          &:hover{
+                              @include hover;
+                              outline: none;
+                          }
+                          &:active{
+                              outline: none;
+                          }
+                          &:focus{
+                              outline: none;
+                          }
+                      }
+                  }
+              }
+          }
+      }
+  }
+}
+
+.footer {
+  height: 60vh;
+  background-image: url(../img/bg-footer.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  padding: 15vh 0;
+  
+      &__content {
+          width: 65%;
+          height: 100%;
+          max-width: 770px;
+          margin: 0 auto;
+          @include Flex-ju();
+          flex-direction: column;
+          align-items: center;
+
+          .footer__info {
+              width: 100%;
+              display: flex;
+              flex-direction: row;
+              justify-content: space-between;
+              align-items: center;  
+          }
+
+          &_logo {
+            img{
+                width: 100%;
+            }
+          }
+
+          &_social {
+            width: 10vw;
+            display: flex;
+            justify-content: space-between;  
+          }
+
+          .footer__text {
+              width: 100%;
+              display: flex;
+              flex-direction: row;
+
+              p {
+                font-family: "GothamBook", sans-serif;
+                font-size: 1.4rem;
+                text-decoration: none;
+                font-weight: 300;
+                color: #fff;
+                margin-top: 3rem;
+
+                  &:first-of-type::after{
+                      content: '';
+                      border-left: 1px solid #fff;
+                      margin: 0 2rem;
+                  }
+              }
+          }
+      }
+  
+}
+
